@@ -1,0 +1,20 @@
+1.安装git
+sudo apt-get update
+sudo apt-get install git
+
+2.配置我的github
+git config --global user.name "Your name"
+git config --global user.email "your email@domain.com"
+
+3.查看配置信息
+git config --list
+
+4.创建公钥
+ssh-keygen -C 'youremail@gmail.com' -t rsa  //这里的email帐号是你的github帐号注册的email
+
+5.上传公钥
+在第4步中，ubuntu会生成一个密钥文件在 ~/.ssh/id_rsa.pub 这是一个隐藏文件，用ctrl+h来显示，打开文件后把所有内容拷贝下来，进入github官网登录帐号，右上角图标下拉箭头找到settings，点击进入后左边有个SSH and GPG keys,进入后点击 new SSH key,把拷贝的内容粘贴到上面即可
+
+6.最后可以用一个命令查看测试是否成功
+ssh-v git@github.com
+

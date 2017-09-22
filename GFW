@@ -1,0 +1,9 @@
+1.从网上下载hosts文件
+https://laod.cn/hosts/2017-google-hosts.html
+2.更改自己的hosts文件，首先终端打开hosts文件
+sudo gedit /etc/hosts
+3.将网上下载的hosts文件拷贝到自己的hosts文件下即
+4.重新启动网络管理器来生效
+sudo rcnscd restart
+或
+sudo systemctl restart NetworkManager
