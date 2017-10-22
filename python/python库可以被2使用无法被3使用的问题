@@ -1,0 +1,5 @@
+这是由于下载的库默认为2的版本，需要下载3的版本
+1.先下载python3-pip模块，相当于一个easy-install，帮助安装模块
+sudo apt-get install python3-pip
+2.用pip3命令下载模块，加入需要numpy模块，执行以下命令
+sudo pip3 install numpy即可

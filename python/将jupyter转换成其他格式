@@ -1,0 +1,3 @@
+jupyter nbconvert --to pdf filename.ipynb
+表示将文件转换为pdf格式
+可以将pdf换成其他命令，表示转换成其他格式

@@ -1,0 +1,7 @@
+1.到官网http://continuum.io/downloads下载anaconda
+2.安装anaconda
+cd ./下载
+bash Anaconda-*****.sh
+3.全部选择yes或回车，安装完成
+4.在终端输入python发现依然是gnome自带的python版本，这是因为.bashrc的更新还没有生效，命令行输入：source ~/.bashrc  
+

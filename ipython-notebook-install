@@ -1,0 +1,8 @@
+1.首先安装python的pip
+sudo apt-get install python-pip
+2.安装ipython
+sudo apt-gert install ipython
+3.安装ipython notebook
+sudo apt-get install ipython-notebook
+4.启动ipython notebook
+ipython notebook

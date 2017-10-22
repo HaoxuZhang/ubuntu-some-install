@@ -1,0 +1,118 @@
+出现这个问题：处理软件包 python-numpy (--configure)时出错：  子进程 已安装 post-installation 脚本 返回错误状态 1
+~$ sudo apt-get install python-pip
+正在读取软件包列表... 完成
+正在分析软件包的依赖关系树       
+正在读取状态信息... 完成       
+python-pip 已经是最新的版本了。
+升级了 0 个软件包，新安装了 0 个软件包，要卸载 0 个软件包，有 233 个软件包未被升级。
+有 8 个软件包没有被完全安装或卸载。
+解压缩后会消耗掉 0 B 的额外空间。
+您希望继续执行吗？ [Y/n] Y
+正在设置 mercurial-common (2.8.2-1ubuntu1.3) ...
+Traceback (most recent call last):
+  File "/usr/bin/pycompile", line 38, in <module>
+    from debpython.namespace import add_namespace_files
+ImportError: No module named 'debpython.namespace'
+dpkg: 处理软件包 mercurial-common (--configure)时出错：
+ 子进程 已安装 post-installation 脚本 返回了错误号 1
+dpkg: 依赖关系问题使得 mercurial 的配置工作不能继续：
+ mercurial 依赖于 mercurial-common (= 2.8.2-1ubuntu1.3)；然而：
+  软件包 mercurial-common 尚未配置。
+
+dpkg: 处理软件包 mercurial (--configure)时出错：
+ 依赖关系问题 - 仍未被配置
+正在设置 python-colorama (0.2.5-0.1ubuntu2) ...
+因为错误消息指示这是由于上一个问题导致的错误，没有写入 apport 报告。
+                                                                    Traceback (most recent call last):
+  File "/usr/bin/pycompile", line 38, in <module>
+    from debpython.namespace import add_namespace_files
+ImportError: No module named 'debpython.namespace'
+dpkg: 处理软件包 python-colorama (--configure)时出错：
+ 子进程 已安装 post-installation 脚本 返回了错误号 1
+正在设置 python-distlib (0.1.8-1ubuntu1) ...
+Traceback (most recent call last):
+  File "/usr/bin/pycompile", line 38, in <module>
+    from debpython.namespace import add_namespace_files
+ImportError: No module named 'debpython.namespace'
+由于已经达到 MaxReports 限制，没有写入 apport 报告。
+                                                    dpkg: 处理软件包 python-distlib (--configure)时出错：
+ 子进程 已安装 post-installation 脚本 返回了错误号 1
+正在设置 python-html5lib (0.999-3~ubuntu1) ...
+Traceback (most recent call last):
+  File "/usr/bin/pycompile", line 38, in <module>
+    from debpython.namespace import add_namespace_files
+ImportError: No module named 'debpython.namespace'
+dpkg: 处理软件包 python-html5lib (--configure)时出错：
+ 子进程 已安装 post-installation 脚本 返回了错误号 1
+由于已经达到 MaxReports 限制，没有写入 apport 报告。
+                                                    正在设置 python-setuptools (3.3-1ubuntu2) ...
+Traceback (most recent call last):
+  File "/usr/bin/pycompile", line 38, in <module>
+    from debpython.namespace import add_namespace_files
+ImportError: No module named 'debpython.namespace'
+由于已经达到 MaxReports 限制，没有写入 apport 报告。
+                                                    由于已经达到 MaxReports 限制，没有写入 apport 报告。
+                        dpkg: 处理软件包 python-setuptools (--configure)时出错：
+ 子进程 已安装 post-installation 脚本 返回了错误号 1
+dpkg: 依赖关系问题使得 python-pip 的配置工作不能继续：
+ python-pip 依赖于 python-colorama；然而：
+  软件包 python-colorama 尚未配置。
+ python-pip 依赖于 python-distlib；然而：
+  软件包 python-distlib 尚未配置。
+ python-pip 依赖于 python-html5lib；然而：
+  软件包 python-html5lib 尚未配置。
+ python-pip 依赖于 python-setuptools (>= 0.6c1)；然而：
+  软件包 python-setuptools 尚未配置。
+
+dpkg: 处理软件包 python-pip (--configure)时出错：
+ 依赖关系问题 - 仍未被配置
+正在设置 python-wheel (0.24.0-1~ubuntu1) ...
+Traceback (most recent call last):
+  File "/usr/bin/pycompile", line 38, in <module>
+    from debpython.namespace import add_namespace_files
+ImportError: No module named 'debpython.namespace'
+dpkg: 处理软件包 python-wheel (--configure)时出错：
+ 子进程 已安装 post-installation 脚本 返回了错误号 1
+由于已经达到 MaxReports 限制，没有写入 apport 报告。
+                                                    E: Sub-process /usr/bin/dpkg returned an error code (1)
+
+复制代码
+
+首先输入:
+
+ sudo dpkg -C 
+
+显示:
+复制代码
+
+:~$ sudo dpkg -C
+下列软件包已被解开，但是尚未配置。
+要令它们运行正常，您必须借助 dpkg --configure
+或者 dselect 菜单中的配置项：
+ python-pip           alternative Python package installer
+ mercurial            easy-to-use, scalable distributed version control system
+
+下列软件包只是被不全面地配置了，这也许要归咎于
+第一次配置它们时出的问题。您最好能重新配置它们。
+借助 dpkg --configure <软件包名> 或者用 dselect 
+菜单中的配置项重新配置软件包：
+ python-distlib       low-level components of python distutils2/packaging
+ mercurial-common     easy-to-use, scalable distributed version control system 
+ python-colorama      Cross-platform colored terminal text in Python - Python 2
+ python-html5lib      HTML parser/tokenizer based on the WHATWG HTML5 specifica
+ python-setuptools    Python Distutils Enhancements
+ python-wheel         built-package format for Python
+
+复制代码
+
+分析:
+
+  原因是,我们在将python2.7升级到python3.3时,只是将/usr/local/bin目录下修改了(使用ln -s 或者其他),然而我们的配置目录并没有修改..
+
+使用如下的方式可以有效的解决:
+
+sudo apt-get clean
+sudo apt-get update
+sudo apt-get install --reinstall python-minimal python-lockfile
+
+
